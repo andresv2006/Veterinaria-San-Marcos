@@ -78,3 +78,20 @@ main {
 .salto-contenido:focus {
   position: static;
 }
+
+.grilla-tarjetas {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 1rem;
+}
+
+.tarjeta {
+  flex: 1 1 18rem;
+  padding: 1rem;
+  background: #ffffff;
+}
+
+img {
+  max-width: 100%;
+  height: auto;
+}
