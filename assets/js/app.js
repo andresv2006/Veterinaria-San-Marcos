@@ -1,4 +1,3 @@
-// Manejo del botón de bienvenida en la página de inicio
 const botonBienvenida = document.querySelector("#boton-bienvenida");
 if (botonBienvenida) {
   botonBienvenida.addEventListener("click", () => {
@@ -6,11 +5,9 @@ if (botonBienvenida) {
   });
 }
 
-// Validaciones para el formulario de contacto (Integrante 1 - Andrés)
 const formContacto = document.querySelector("#form-contacto");
 
 if (formContacto) {
-  // Algoritmo Módulo 11 para validación de RUT chileno
   const validarRut = (rut) => {
     const rutLimpio = rut.replace(/[^0-9kK]/g, "");
     if (rutLimpio.length < 7 || rutLimpio.length > 9) return false;
@@ -34,7 +31,6 @@ if (formContacto) {
     return dvIngresado === dvEsperado;
   };
 
-  // Validar dominios de correo permitidos por pauta
   const validarCorreo = (correo) => {
     const dominiosPermitidos = ["duoc.cl", "profesor.duoc.cl", "gmail.com"];
     const partes = correo.trim().toLowerCase().split("@");

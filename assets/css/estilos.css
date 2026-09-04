@@ -122,3 +122,24 @@ img {
   margin-top: 0.25rem;
   font-weight: bold;
 }
+@media (max-width: 600px) {
+  .cabecera-sitio {
+    flex-direction: column;
+    align-items: flex-start;
+  }
+
+  .menu {
+    flex-direction: column;
+    width: 100%;
+    gap: 0.5rem;
+  }
+
+  .menu li {
+    width: 100%;
+  }
+
+  .menu a {
+    display: block;
+    padding: 0.5rem 0;
+  }
+}
