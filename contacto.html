@@ -1,0 +1,48 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta name="description" content="Formulario de contacto de Veterinaria San Marcos.">
+  <title>Contacto | Veterinaria San Marcos</title>
+  <link rel="stylesheet" href="assets/css/estilos.css">
+</head>
+<body>
+  <a class="salto-contenido" href="#contenido-principal">Ir al contenido</a>
+  <header class="cabecera-sitio">
+    <a class="marca" href="index.html">Veterinaria San Marcos</a>
+    <nav aria-label="Navegación principal">
+      <ul class="menu">
+        <li><a href="index.html">Inicio</a></li>
+        <li><a href="nosotros.html">Nosotros</a></li>
+        <li><a href="noticias.html">Noticias</a></li>
+      </ul>
+    </nav>
+  </header>
+  <main id="contenido-principal" tabindex="-1">
+    <h1>Contacto</h1>
+    <p>Completa el formulario para realizar una consulta de prueba.</p>
+    <p>Utiliza solo datos ficticios. Esta demostración no envía ni almacena mensajes.</p>
+    <form class="formulario" action="confirmacion.html" method="get">
+      <fieldset>
+        <legend>Datos de contacto</legend>
+        <label for="nombre">Nombre completo (obligatorio)</label>
+        <input id="nombre" name="nombre" type="text" autocomplete="name" maxlength="100" required>
+        <label for="correo">Correo electrónico (opcional)</label>
+        <input id="correo" name="correo" type="email" autocomplete="email" maxlength="100">
+      </fieldset>
+      <fieldset>
+        <legend>Tu consulta</legend>
+        <label for="comentario">Comentario (obligatorio, máximo 500 caracteres)</label>
+        <textarea id="comentario" name="comentario" rows="5" maxlength="500" required></textarea>
+      </fieldset>
+      <button type="submit">Enviar consulta de prueba</button>
+    </form>
+  </main>
+  <footer class="pie-sitio">
+    <p><strong>Veterinaria San Marcos</strong> · Rancagua</p>
+    <p>Proyecto académico · Desarrollo FullStack II</p>
+  </footer>
+  <script src="assets/js/app.js"></script>
+</body>
+</html>
