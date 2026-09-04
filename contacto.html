@@ -24,19 +24,30 @@
     <h1>Contacto</h1>
     <p>Completa el formulario para realizar una consulta de prueba.</p>
     <p>Utiliza solo datos ficticios. Esta demostración no envía ni almacena mensajes.</p>
-    <form class="formulario" action="confirmacion.html" method="get">
+    <form id="form-contacto" class="formulario" action="confirmacion.html" method="get" novalidate>
       <fieldset>
         <legend>Datos de contacto</legend>
-        <label for="nombre">Nombre completo (obligatorio)</label>
-        <input id="nombre" name="nombre" type="text" autocomplete="name" maxlength="100" required>
-        <label for="correo">Correo electrónico (opcional)</label>
-        <input id="correo" name="correo" type="email" autocomplete="email" maxlength="100">
+        
+        <label for="rut">RUT/RUN (sin puntos ni guión, ej: 19011022K)*</label>
+        <input id="rut" name="rut" type="text" maxlength="9" required placeholder="19011022K">
+        <span id="error-rut" class="mensaje-error" aria-live="polite"></span>
+
+        <label for="nombre">Nombre completo (obligatorio)*</label>
+        <input id="nombre" name="nombre" type="text" autocomplete="name" maxlength="100" required placeholder="Juan Pérez">
+        <span id="error-nombre" class="mensaje-error" aria-live="polite"></span>
+
+        <label for="correo">Correo electrónico (obligatorio)*</label>
+        <input id="correo" name="correo" type="email" autocomplete="email" maxlength="100" required placeholder="usuario@duoc.cl">
+        <span id="error-correo" class="mensaje-error" aria-live="polite"></span>
       </fieldset>
+      
       <fieldset>
         <legend>Tu consulta</legend>
-        <label for="comentario">Comentario (obligatorio, máximo 500 caracteres)</label>
-        <textarea id="comentario" name="comentario" rows="5" maxlength="500" required></textarea>
+        <label for="comentario">Comentario (obligatorio, máximo 500 caracteres)*</label>
+        <textarea id="comentario" name="comentario" rows="5" maxlength="500" required placeholder="Escribe tu consulta aquí..."></textarea>
+        <span id="error-comentario" class="mensaje-error" aria-live="polite"></span>
       </fieldset>
+
       <button type="submit">Enviar consulta de prueba</button>
     </form>
   </main>
