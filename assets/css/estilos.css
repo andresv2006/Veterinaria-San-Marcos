@@ -15,7 +15,7 @@ footer {
   padding: 1.5rem;
 }
 
-header {
+.cabecera-sitio {
   color: #ffffff;
   background-color: #145da0;
 }
@@ -32,4 +32,49 @@ button {
   border: 0;
   border-radius: 0.4rem;
   cursor: pointer;
+}
+
+.cabecera-sitio,
+.menu {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 1rem;
+}
+
+.cabecera-sitio {
+  align-items: center;
+  justify-content: space-between;
+}
+
+.menu {
+  padding: 0;
+  list-style: none;
+}
+
+.marca,
+.menu a {
+  color: inherit;
+}
+
+.marca {
+  font-size: 1.5rem;
+  font-weight: bold;
+}
+
+.menu a[aria-current="page"] {
+  font-weight: bold;
+}
+
+main {
+  max-width: 70rem;
+  margin-inline: auto;
+}
+
+.salto-contenido {
+  position: absolute;
+  left: -10000px;
+}
+
+.salto-contenido:focus {
+  position: static;
 }

@@ -8,11 +8,18 @@
   <link rel="stylesheet" href="assets/css/estilos.css">
 </head>
 <body>
-  <header>
-    <h1>Veterinaria San Marcos</h1>
-    <p>Cuidamos la salud y el bienestar de tus mascotas.</p>
+  <a class="salto-contenido" href="#contenido-principal">Ir al contenido</a>
+  <header class="cabecera-sitio">
+    <a class="marca" href="index.html">Veterinaria San Marcos</a>
+    <nav aria-label="Navegación principal">
+      <ul class="menu">
+        <li><a href="index.html" aria-current="page">Inicio</a></li>
+        <li><a href="nosotros.html">Nosotros</a></li>
+      </ul>
+    </nav>
   </header>
-  <main>
+  <main id="contenido-principal" tabindex="-1">
+    <h1>Cuidamos la salud y el bienestar de tus mascotas</h1>
     <p class="mensaje-inicial">Acompañamos el cuidado de tu mascota en cada etapa de su vida.</p>
     <section>
       <h2>Atención veterinaria en Rancagua</h2>
@@ -25,7 +32,8 @@
       <button id="boton-bienvenida" type="button">Conocer el proyecto</button>
     </section>
   </main>
-  <footer>
+  <footer class="pie-sitio">
+    <p><strong>Veterinaria San Marcos</strong> · Rancagua</p>
     <p>Proyecto académico · Desarrollo FullStack II</p>
   </footer>
   <script src="assets/js/app.js"></script>
