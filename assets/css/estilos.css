@@ -20,6 +20,11 @@ header {
   background-color: #145da0;
 }
 
+.mensaje-inicial {
+  font-size: 1.25rem;
+  color: #2a7f62;
+}
+
 button {
   padding: 0.75rem 1rem;
   color: #ffffff;
