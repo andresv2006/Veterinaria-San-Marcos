@@ -4,6 +4,9 @@
   --color-texto: #16324f;
   --color-fondo: #f4f8fb;
   --color-superficie: #ffffff;
+  --color-borde: #c9d4de;
+  --radio: 0.75rem;
+  --sombra: 0 0.5rem 1.25rem rgb(20 48 68 / 12%);
   --fuente-base: Arial, sans-serif;
 }
 
@@ -120,6 +123,12 @@ button {
   font-weight: bold;
 }
 
+.menu a:hover,
+.menu a[aria-current="page"] {
+  background-color: var(--color-secundario);
+  border-radius: 0.5rem;
+}
+
 .boton-menu {
   display: inline-block;
   padding: 0.65rem 0.85rem;
@@ -155,8 +164,11 @@ button {
 }
 
 .tarjeta {
-  padding: 1rem;
+  padding: 1.5rem;
   background: var(--color-superficie);
+  border: 1px solid var(--color-borde);
+  border-radius: var(--radio);
+  box-shadow: var(--sombra);
 }
 
 img {
@@ -181,7 +193,18 @@ iframe {
   display: grid;
   gap: 0.75rem;
   padding: 1rem;
-  border: 1px solid #b8c4cf;
+  background-color: var(--color-superficie);
+  border: 1px solid var(--color-borde);
+  border-radius: var(--radio);
+  box-shadow: var(--sombra);
+}
+
+.mensaje-confirmacion {
+  padding: 1.5rem;
+  background-color: var(--color-superficie);
+  border: 1px solid var(--color-borde);
+  border-radius: var(--radio);
+  box-shadow: var(--sombra);
 }
 
 .formulario input,
@@ -210,6 +233,11 @@ iframe {
 .boton {
   color: #ffffff;
   background: #2a7f62;
+}
+
+.boton:hover,
+button:hover {
+  background-color: #1c674f;
 }
 
 .boton-secundario {
@@ -460,7 +488,7 @@ tfoot td {
 }
 
 [aria-invalid="true"] {
-  border-color: #d9534f !important;
+  border-color: #d9534f;
 }
 .mensaje-error {
   display: block;
@@ -503,7 +531,7 @@ tfoot td {
   }
 
   .menu a {
-    padding: 0;
+    padding: 0.5rem 0.75rem;
   }
 
   .grilla-tarjetas {
