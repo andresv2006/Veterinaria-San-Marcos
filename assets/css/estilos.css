@@ -1,12 +1,21 @@
+:root {
+  --color-primario: #145da0;
+  --color-secundario: #2a7f62;
+  --color-texto: #16324f;
+  --color-fondo: #f4f8fb;
+  --color-superficie: #ffffff;
+  --fuente-base: Arial, sans-serif;
+}
+
 * {
   box-sizing: border-box;
 }
 
 body {
   margin: 0;
-  font-family: Arial, sans-serif;
-  color: #16324f;
-  background-color: #f4f8fb;
+  font-family: var(--fuente-base);
+  color: var(--color-texto);
+  background-color: var(--color-fondo);
 }
 
 header,
@@ -16,19 +25,19 @@ footer {
 }
 
 .cabecera-sitio {
-  color: #ffffff;
-  background-color: #145da0;
+  color: var(--color-superficie);
+  background-color: var(--color-primario);
 }
 
 .mensaje-inicial {
   font-size: 1.25rem;
-  color: #2a7f62;
+  color: var(--color-secundario);
 }
 
 button {
   padding: 0.75rem 1rem;
-  color: #ffffff;
-  background-color: #2a7f62;
+  color: var(--color-superficie);
+  background-color: var(--color-secundario);
   border: 0;
   border-radius: 0.4rem;
   cursor: pointer;
@@ -88,7 +97,7 @@ main {
 .tarjeta {
   flex: 1 1 18rem;
   padding: 1rem;
-  background: #ffffff;
+  background: var(--color-superficie);
 }
 
 img {
