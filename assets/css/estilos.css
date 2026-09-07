@@ -110,11 +110,10 @@ button {
 }
 
 .logo-sitio {
-  width: 3rem;
-  height: 3rem;
-  border: 0.15rem solid var(--color-superficie);
-  border-radius: 50%;
-  object-fit: cover;
+  width: 6.5rem;
+  height: 6.5rem;
+  border-radius: 1rem;
+  object-fit: contain;
 }
 
 .menu a[aria-current="page"] {
