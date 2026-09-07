@@ -40,6 +40,22 @@ main {
   color: var(--color-secundario);
 }
 
+.presentacion-principal {
+  display: grid;
+  grid-template-columns: 1fr;
+  gap: 1.5rem;
+  align-items: center;
+  margin-bottom: 2rem;
+  padding: 1.5rem;
+  background-color: var(--color-superficie);
+}
+
+.presentacion-principal img {
+  width: 100%;
+  max-height: 24rem;
+  object-fit: cover;
+}
+
 button {
   padding: 0.75rem 1rem;
   color: var(--color-superficie);
@@ -479,6 +495,10 @@ tfoot td {
   }
 
   .grilla-tarjetas {
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+  }
+
+  .presentacion-principal {
     grid-template-columns: repeat(2, minmax(0, 1fr));
   }
 }
