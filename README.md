@@ -18,5 +18,5 @@ Sitio web y plataforma de gestión para la Veterinaria San Marcos ubicada en Ran
 
 ## Integrantes
 - Daniel Bueno
-- Angel Cubillod
+- Angel Cubillos
 - Andrés Vargas
