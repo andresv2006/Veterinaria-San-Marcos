@@ -95,7 +95,8 @@ button {
 }
 
 .marca,
-.menu a {
+.menu a,
+.pie-sitio a {
   color: inherit;
 }
 
