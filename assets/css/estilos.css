@@ -438,8 +438,17 @@ tfoot td {
   display: block;
   font-size: 0.875rem;
   color: #d9534f;
+  min-height: 1.25rem;
   margin-top: 0.25rem;
   font-weight: bold;
+}
+
+.campo-invalido {
+  border: 0.15rem solid #b42318;
+}
+
+.campo-invalido:focus {
+  outline: 0.2rem solid #f4a6a0;
 }
 @media (min-width: 48rem) {
   .boton-menu {

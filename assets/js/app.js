@@ -92,3 +92,108 @@ if (botonBienvenida) {
   });
 }
 
+const formularioContacto = document.querySelector("#form-contacto");
+
+if (formularioContacto) {
+  const nombreContacto = document.querySelector("#nombre");
+  const correoContacto = document.querySelector("#correo");
+  const comentarioContacto = document.querySelector("#comentario");
+  const mensajeContacto = document.querySelector("#mensaje-contacto");
+
+  function mostrarError(control, idError, mensaje) {
+    const salida = document.querySelector(`#${idError}`);
+    salida.textContent = mensaje;
+    control.classList.add("campo-invalido");
+    control.setAttribute("aria-invalid", "true");
+  }
+
+  function limpiarError(control, idError) {
+    const salida = document.querySelector(`#${idError}`);
+    salida.textContent = "";
+    control.classList.remove("campo-invalido");
+    control.removeAttribute("aria-invalid");
+  }
+
+  function validarNombreContacto(valor) {
+    limpiarError(nombreContacto, "error-nombre");
+    if (valor === "") {
+      mostrarError(nombreContacto, "error-nombre", "El nombre completo es obligatorio.");
+      return false;
+    }
+    if (valor.length > 100) {
+      mostrarError(nombreContacto, "error-nombre", "El nombre permite un máximo de 100 caracteres.");
+      return false;
+    }
+    return true;
+  }
+
+  function validarCorreoContacto(valor) {
+    limpiarError(correoContacto, "error-correo");
+    if (valor === "") {
+      return true;
+    }
+
+    const dominioPermitido =
+      valor.endsWith("@duoc.cl") ||
+      valor.endsWith("@profesor.duoc.cl") ||
+      valor.endsWith("@gmail.com");
+
+    if (!valor.includes("@") || !dominioPermitido) {
+      mostrarError(correoContacto, "error-correo", "El correo debe ser @duoc.cl, @profesor.duoc.cl o @gmail.com.");
+      return false;
+    }
+    return true;
+  }
+
+  function validarComentarioContacto(valor) {
+    limpiarError(comentarioContacto, "error-comentario");
+    if (valor === "") {
+      mostrarError(comentarioContacto, "error-comentario", "El comentario es obligatorio.");
+      return false;
+    }
+    if (valor.length > 500) {
+      mostrarError(comentarioContacto, "error-comentario", "El comentario permite un máximo de 500 caracteres.");
+      return false;
+    }
+    return true;
+  }
+
+  function procesarContacto(evento) {
+    const nombreValido = validarNombreContacto(nombreContacto.value.trim());
+    const correoValido = validarCorreoContacto(correoContacto.value.trim().toLowerCase());
+    const comentarioValido = validarComentarioContacto(comentarioContacto.value.trim());
+    const formularioValido = nombreValido && correoValido && comentarioValido;
+
+    if (!formularioValido) {
+      evento.preventDefault();
+      mensajeContacto.textContent = "Revisa los campos marcados.";
+      return;
+    }
+
+    mensajeContacto.textContent = "Formulario válido.";
+  }
+
+  nombreContacto.addEventListener("blur", function () {
+    validarNombreContacto(nombreContacto.value.trim());
+  });
+  nombreContacto.addEventListener("input", function () {
+    limpiarError(nombreContacto, "error-nombre");
+  });
+
+  correoContacto.addEventListener("blur", function () {
+    validarCorreoContacto(correoContacto.value.trim().toLowerCase());
+  });
+  correoContacto.addEventListener("input", function () {
+    limpiarError(correoContacto, "error-correo");
+  });
+
+  comentarioContacto.addEventListener("blur", function () {
+    validarComentarioContacto(comentarioContacto.value.trim());
+  });
+  comentarioContacto.addEventListener("input", function () {
+    limpiarError(comentarioContacto, "error-comentario");
+  });
+
+  formularioContacto.addEventListener("submit", procesarContacto);
+}
+
