@@ -1,0 +1,23 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8"><meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta name="description" content="Carrito de compras de Veterinaria San Marcos.">
+  <title>Carrito | Veterinaria San Marcos</title><link rel="stylesheet" href="assets/css/estilos.css">
+</head>
+<body>
+  <a class="salto-contenido" href="#contenido-principal">Ir al contenido</a>
+  <header class="cabecera-sitio"><a class="marca" href="index.html">Veterinaria San Marcos</a><nav aria-label="Navegación principal"><ul class="menu">
+    <li><a href="index.html">Inicio</a></li><li><a href="catalogo.html">Catálogo</a></li><li><a href="nosotros.html">Nosotros</a></li><li><a href="noticias.html">Noticias</a></li><li><a href="contacto.html">Contacto</a></li><li><a href="carrito.html" aria-current="page">Carrito</a></li>
+  </ul></nav></header>
+  <main id="contenido-principal" tabindex="-1">
+    <h1>Carrito de compras</h1><p>El carrito se guarda en este navegador mediante localStorage.</p>
+    <div class="tabla-responsive"><table><caption>Productos añadidos</caption><thead><tr><th scope="col">Producto</th><th scope="col">Precio</th><th scope="col">Cantidad</th><th scope="col">Subtotal</th><th scope="col">Acción</th></tr></thead><tbody id="cuerpo-carrito"></tbody><tfoot><tr><th scope="row" colspan="3">Total</th><td id="total-carrito" colspan="2">$0</td></tr></tfoot></table></div>
+    <p id="mensaje-carrito" class="mensaje-estado" aria-live="polite"></p>
+    <div class="acciones-carrito"><button id="vaciar-carrito" class="boton-peligro" type="button">Vaciar carrito</button><button id="finalizar-carrito" type="button">Finalizar compra simulada</button></div>
+  </main>
+  <footer class="pie-sitio"><p><strong>Veterinaria San Marcos</strong> · Rancagua</p><p>Proyecto académico · Desarrollo FullStack II</p></footer>
+  <script src="assets/js/datos.js"></script><script src="assets/js/carrito.js"></script>
+</body>
+</html>
+
