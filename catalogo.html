@@ -1,0 +1,50 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta name="description" content="Catálogo de productos y servicios de Veterinaria San Marcos.">
+  <title>Catálogo | Veterinaria San Marcos</title>
+  <link rel="stylesheet" href="assets/css/estilos.css">
+</head>
+<body>
+  <a class="salto-contenido" href="#contenido-principal">Ir al contenido</a>
+  <header class="cabecera-sitio">
+    <a class="marca" href="index.html">Veterinaria San Marcos</a>
+    <nav aria-label="Navegación principal"><ul class="menu">
+      <li><a href="index.html">Inicio</a></li><li><a href="catalogo.html" aria-current="page">Catálogo</a></li>
+      <li><a href="nosotros.html">Nosotros</a></li><li><a href="noticias.html">Noticias</a></li><li><a href="contacto.html">Contacto</a></li>
+      <li><a href="carrito.html">Carrito (<span data-contador-carrito>0</span>)</a></li>
+    </ul></nav>
+  </header>
+  <main id="contenido-principal" tabindex="-1">
+    <h1>Productos y servicios</h1>
+    <p>Los datos de esta página fueron traspasados desde la planilla entregada para el caso.</p>
+
+    <section aria-labelledby="titulo-productos">
+      <h2 id="titulo-productos">Productos disponibles</h2>
+      <div class="barra-filtros">
+        <div><label for="buscar-producto">Buscar por código o nombre</label><input id="buscar-producto" type="search" placeholder="Ejemplo: ME004 o Nexgard"></div>
+        <div><label for="filtro-producto">Categoría</label><select id="filtro-producto"><option>Todas</option></select></div>
+      </div>
+      <p id="cantidad-productos" class="resultado-filtro"></p>
+      <p id="aviso-catalogo" class="mensaje-estado" aria-live="polite"></p>
+      <div id="lista-productos" class="grilla-tarjetas"></div>
+    </section>
+
+    <section aria-labelledby="titulo-servicios">
+      <h2 id="titulo-servicios">Tabla de servicios</h2>
+      <div class="barra-filtros"><div><label for="filtro-servicio">Filtrar por categoría</label><select id="filtro-servicio"><option>Todas</option></select></div></div>
+      <p id="cantidad-servicios" class="resultado-filtro"></p>
+      <div class="tabla-responsive">
+        <table><caption>Servicios y precios referenciales</caption><thead><tr>
+          <th scope="col">Código</th><th scope="col">Categoría</th><th scope="col">Servicio</th><th scope="col">Especie</th><th scope="col">Duración</th><th scope="col">Precio</th><th scope="col">Observaciones</th>
+        </tr></thead><tbody id="cuerpo-servicios"></tbody></table>
+      </div>
+    </section>
+  </main>
+  <footer class="pie-sitio"><p><strong>Veterinaria San Marcos</strong> · Rancagua</p><p>Proyecto académico · Desarrollo FullStack II</p></footer>
+  <script src="assets/js/datos.js"></script><script src="assets/js/catalogo.js"></script>
+</body>
+</html>
+
