@@ -19,9 +19,15 @@ body {
 }
 
 header,
-main,
 footer {
   padding: 1.5rem;
+}
+
+main {
+  width: 90%;
+  max-width: 70rem;
+  margin-inline: auto;
+  padding-block: 1.5rem;
 }
 
 .cabecera-sitio {
@@ -46,18 +52,30 @@ button {
 .cabecera-sitio,
 .menu {
   display: flex;
-  flex-wrap: wrap;
   gap: 1rem;
 }
 
 .cabecera-sitio {
-  align-items: center;
-  justify-content: space-between;
+  flex-direction: column;
+  align-items: flex-start;
 }
 
 .menu {
+  width: 100%;
+  flex-direction: column;
+  gap: 0.5rem;
+  margin: 0;
   padding: 0;
   list-style: none;
+}
+
+.menu li {
+  width: 100%;
+}
+
+.menu a {
+  display: block;
+  padding: 0.5rem 0;
 }
 
 .marca,
@@ -74,11 +92,6 @@ button {
   font-weight: bold;
 }
 
-main {
-  max-width: 70rem;
-  margin-inline: auto;
-}
-
 .salto-contenido {
   position: absolute;
   left: -10000px;
@@ -89,13 +102,12 @@ main {
 }
 
 .grilla-tarjetas {
-  display: flex;
-  flex-wrap: wrap;
-  gap: 1rem;
+  display: grid;
+  grid-template-columns: 1fr;
+  gap: 1.5rem;
 }
 
 .tarjeta {
-  flex: 1 1 18rem;
   padding: 1rem;
   background: var(--color-superficie);
 }
@@ -400,26 +412,41 @@ tfoot td {
   margin-top: 0.25rem;
   font-weight: bold;
 }
-@media (max-width: 600px) {
+@media (min-width: 48rem) {
   .cabecera-sitio {
-    flex-direction: column;
-    align-items: flex-start;
+    flex-direction: row;
+    flex-wrap: wrap;
+    align-items: center;
+    justify-content: space-between;
   }
 
   .menu {
-    flex-direction: column;
-    width: 100%;
-    gap: 0.5rem;
+    width: auto;
+    flex-direction: row;
+    flex-wrap: wrap;
+    gap: 1rem;
   }
 
   .menu li {
-    width: 100%;
+    width: auto;
   }
 
   .menu a {
-    display: block;
-    padding: 0.5rem 0;
+    padding: 0;
   }
+
+  .grilla-tarjetas {
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+  }
+}
+
+@media (min-width: 64rem) {
+  .grilla-tarjetas {
+    grid-template-columns: repeat(3, minmax(0, 1fr));
+  }
+}
+
+@media (max-width: 600px) {
 
   .detalle-producto,
   .lista-datos,
