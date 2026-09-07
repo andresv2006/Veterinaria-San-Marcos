@@ -10,7 +10,9 @@
   --fuente-base: Arial, sans-serif;
 }
 
-* {
+*,
+*::before,
+*::after {
   box-sizing: border-box;
 }
 
@@ -150,11 +152,14 @@ button {
 
 .salto-contenido {
   position: absolute;
-  left: -10000px;
+  padding: 0.6rem 1rem;
+  color: var(--color-superficie);
+  background-color: var(--color-texto);
+  transform: translateY(-150%);
 }
 
 .salto-contenido:focus {
-  position: static;
+  transform: translateY(0);
 }
 
 .grilla-tarjetas {
@@ -220,6 +225,18 @@ iframe {
   background: #ffffff;
   border: 1px solid #9caebd;
   border-radius: 0.3rem;
+}
+
+.formulario input:required,
+.formulario textarea:required,
+.formulario select:required {
+  border-left: 0.3rem solid var(--color-primario);
+}
+
+.formulario input:focus,
+.formulario textarea:focus,
+.formulario select:focus {
+  border-color: var(--color-primario);
 }
 
 .boton,
