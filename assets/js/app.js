@@ -28,7 +28,7 @@ function crearTarjetaServicio(servicio) {
   if (servicio.precio === 0) {
     precio.textContent = "Gratis";
   } else {
-    precio.textContent = `Precio: $${servicio.precio}`;
+    precio.textContent = `Precio: ${window.VSM.formatearPrecio(servicio.precio)}`;
   }
 
   const cupos = document.createElement("p");
