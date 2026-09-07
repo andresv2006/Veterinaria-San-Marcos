@@ -30,16 +30,12 @@
       <fieldset>
         <legend>Datos de contacto</legend>
         
-        <label for="rut">RUT/RUN (sin puntos ni guión, ej: 19011022K)*</label>
-        <input id="rut" name="rut" type="text" maxlength="9" required placeholder="19011022K">
-        <span id="error-rut" class="mensaje-error" aria-live="polite"></span>
-
         <label for="nombre">Nombre completo (obligatorio)*</label>
         <input id="nombre" name="nombre" type="text" autocomplete="name" maxlength="100" required placeholder="Juan Pérez">
         <span id="error-nombre" class="mensaje-error" aria-live="polite"></span>
 
-        <label for="correo">Correo electrónico (obligatorio)*</label>
-        <input id="correo" name="correo" type="email" autocomplete="email" maxlength="100" required placeholder="usuario@duoc.cl">
+        <label for="correo">Correo electrónico (opcional)</label>
+        <input id="correo" name="correo" type="email" autocomplete="email" maxlength="100" placeholder="usuario@duoc.cl">
         <span id="error-correo" class="mensaje-error" aria-live="polite"></span>
       </fieldset>
       
