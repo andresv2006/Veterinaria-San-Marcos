@@ -31,29 +31,30 @@
         <legend>Datos de contacto</legend>
         
         <label for="nombre">Nombre completo (obligatorio)*</label>
-        <input id="nombre" name="nombre" type="text" autocomplete="name" maxlength="100" required placeholder="Juan Pérez">
+        <input id="nombre" name="nombre" type="text" autocomplete="name" maxlength="100" required aria-describedby="error-nombre" placeholder="Juan Pérez">
         <span id="error-nombre" class="mensaje-error" aria-live="polite"></span>
 
         <label for="correo">Correo electrónico (opcional)</label>
-        <input id="correo" name="correo" type="email" autocomplete="email" maxlength="100" placeholder="usuario@duoc.cl">
+        <input id="correo" name="correo" type="email" autocomplete="email" maxlength="100" aria-describedby="error-correo" placeholder="usuario@duoc.cl">
         <span id="error-correo" class="mensaje-error" aria-live="polite"></span>
       </fieldset>
       
       <fieldset>
         <legend>Tu consulta</legend>
         <label for="comentario">Comentario (obligatorio, máximo 500 caracteres)*</label>
-        <textarea id="comentario" name="comentario" rows="5" maxlength="500" required placeholder="Escribe tu consulta aquí..."></textarea>
+        <textarea id="comentario" name="comentario" rows="5" maxlength="500" required aria-describedby="error-comentario" placeholder="Escribe tu consulta aquí..."></textarea>
         <span id="error-comentario" class="mensaje-error" aria-live="polite"></span>
       </fieldset>
 
       <button type="submit">Enviar consulta de prueba</button>
+      <p id="mensaje-contacto" role="status"></p>
     </form>
   </main>
   <footer class="pie-sitio">
     <p><strong>Veterinaria San Marcos</strong> · Rancagua</p>
     <p>Proyecto académico · Desarrollo FullStack II</p>
   </footer>
-  <script src="assets/js/app.js"></script>
+  <script src="assets/js/contacto.js"></script>
   <script src="assets/js/menu.js"></script>
 </body>
 </html>
