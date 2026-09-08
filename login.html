@@ -1,59 +1,204 @@
-<!DOCTYPE html>
-<html lang="es">
-<head>
-  <meta charset="UTF-8"><meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <meta name="description" content="Inicio de sesión en Veterinaria San Marcos.">
-  <title>Iniciar Sesión | Veterinaria San Marcos</title><link rel="stylesheet" href="assets/css/estilos.css"></head>
-<body class="pagina-login">
-  <a class="salto-contenido" href="#contenido-principal">Ir al contenido</a>
-  <header class="cabecera-sitio"><a class="marca" href="index.html"><img class="logo-sitio" src="assets/img/logo-veterinaria.jpg" alt=""><span>Veterinaria San Marcos</span></a><button id="boton-menu" class="boton-menu" type="button" aria-label="Abrir o cerrar menú principal" aria-controls="menu-principal" aria-expanded="false"><span aria-hidden="true">☰</span></button><nav aria-label="Navegación principal">
-    <ul id="menu-principal" class="menu">
-      <li><a href="index.html">Inicio</a></li>
-      <li><a href="catalogo.html">Catálogo</a></li>
-      <li><a href="nosotros.html">Nosotros</a></li>
-      <li><a href="noticias.html">Noticias</a></li>
-      <li><a href="contacto.html">Contacto</a></li>
-      <li><a href="registro.html">Registrarse</a></li>
-    </ul></nav>
-  </header>
-  <main id="contenido-principal" tabindex="-1">
-    <section class="mensaje-confirmacion">
-      <h1>Iniciar Sesión</h1>
-      <p>Ingresa tus credenciales para acceder a tu cuenta.</p>
-      <p><small><strong>Nota importante:</strong> Esta es una demostración frontend. Las contraseñas se almacenan en texto plano, lo cual NO es seguro para producción real.</small></p>
-    </section>
-    
-    <form id="form-login" class="formulario" novalidate>
-      <fieldset>
-        <legend>Credenciales</legend>
-        
-        <label for="login-usuario">Usuario o Correo *</label>
-        <input id="login-usuario" name="usuario" type="text" maxlength="50" required aria-describedby="error-login-usuario" placeholder="Ej: juanperez o usuario@duoc.cl">
-        <span id="error-login-usuario" class="mensaje-error" aria-live="polite"></span>
+<!DOCTYPE html> <html lang="es"> <head> <meta charset="UTF-8"> <meta name="viewport" content="width=device-width, initial-scale=1.0"> <meta name="description" content="Inicio de sesión de Veterinaria San Marcos."> <title>Iniciar Sesión | Veterinaria San Marcos</title> <link rel="stylesheet" href="assets/css/estilos.css"> </head> <body class="pagina-login"> <a class="salto-contenido" href="#contenido-principal"> Ir al contenido </a> <header class="cabecera-sitio">
+<a class="marca" href="index.html">
+  <img
+    class="logo-sitio"
+    src="assets/img/logo-veterinaria.jpg"
+    alt=""
+  >
+  <span>Veterinaria San Marcos</span>
+</a>
 
-        <label for="login-password">Contraseña *</label>
-        <input id="login-password" name="password" type="password" minlength="6" required aria-describedby="error-login-password" placeholder="Tu contraseña">
-        <span id="error-login-password" class="mensaje-error" aria-live="polite"></span>
+<button
+  id="boton-menu"
+  class="boton-menu"
+  type="button"
+  aria-label="Abrir o cerrar menú principal"
+  aria-controls="menu-principal"
+  aria-expanded="false"
+>
+  <span aria-hidden="true">☰</span>
+</button>
 
-        <div class="nota-demo">
-          <p><strong>Datos de prueba:</strong></p>
-          <ul>
-            <li>Usuario: <code>admin@veterinaria.cl</code> / Contraseña: <code>admin123</code> (Rol: Administrador)</li>
-            <li>Usuario: <code>usuario@duoc.cl</code> / Contraseña: <code>usuario123</code> (Rol: Usuario normal)</li>
-          </ul>
-        </div>
-      </fieldset>
-      
-      <button type="submit">Iniciar Sesión</button>
-      <a href="registro.html" class="boton-secundario">¿No tienes cuenta? Regístrate</a>
-      <p id="mensaje-login" role="status"></p>
-    </form>
-  </main>
-  <footer class="pie-sitio">
-    <p><strong>Veterinaria San Marcos</strong> · Rancagua</p>
-    <address>Contacto: <a href="contacto.html">Formulario de contacto</a></address>
-    <p><small>Proyecto académico · Desarrollo FullStack II</small></p>
-  </footer>
-  <script src="assets/js/datos.js"></script><script src="assets/js/login.js"></script><script src="assets/js/menu.js"></script>
-</body>
-</html>
+<nav aria-label="Navegación principal">
+  <ul id="menu-principal" class="menu">
+
+    <li>
+      <a href="index.html">Inicio</a>
+    </li>
+
+    <li>
+      <a href="catalogo.html">Catálogo</a>
+    </li>
+
+    <li>
+      <a href="nosotros.html">Nosotros</a>
+    </li>
+
+    <li>
+      <a href="noticias.html">Noticias</a>
+    </li>
+
+    <li>
+      <a href="contacto.html">Contacto</a>
+    </li>
+
+    <li>
+      <a href="carrito.html">
+        Carrito (<span data-contador-carrito>0</span>)
+      </a>
+    </li>
+
+    <li>
+      <a href="registro.html">Registro</a>
+    </li>
+
+  </ul>
+</nav>
+
+</header> <main id="contenido-principal" tabindex="-1">
+<section
+  class="presentacion-principal"
+  aria-labelledby="titulo-login"
+>
+
+  <div>
+
+    <h1 id="titulo-login">
+      Iniciar Sesión
+    </h1>
+
+    <p>
+      Inicia sesión para acceder a tu cuenta.
+    </p>
+
+    <p class="nota-demo">
+      ⚠️ Esta es una demostración frontend.
+      No proporciona seguridad real.
+    </p>
+
+  </div>
+
+  <img
+    src="assets/img/mascotas.jpg"
+    alt="Mascota sonriente"
+  >
+
+</section>
+
+
+<section
+  class="contenedor-auth"
+  aria-labelledby="titulo-form-login"
+>
+
+  <h2 id="titulo-form-login">
+    Formulario de inicio de sesión
+  </h2>
+
+  <form
+    id="form-login"
+    class="formulario"
+    novalidate
+  >
+
+    <fieldset>
+
+      <legend>
+        Datos de acceso
+      </legend>
+
+
+      <label for="usuario-login">
+        Nombre de usuario o correo *
+      </label>
+
+      <input
+        id="usuario-login"
+        name="usuario"
+        type="text"
+        autocomplete="username"
+        required
+        aria-describedby="error-login-usuario"
+        placeholder="juanperez o juan@duoc.cl"
+      >
+
+      <span
+        id="error-login-usuario"
+        class="mensaje-error"
+        aria-live="polite"
+      ></span>
+
+
+      <label for="contrasena-login">
+        Contraseña *
+      </label>
+
+      <input
+        id="contrasena-login"
+        name="contrasena"
+        type="password"
+        autocomplete="current-password"
+        required
+        aria-describedby="error-login-contrasena"
+        placeholder="Ingresa tu contraseña"
+      >
+
+      <span
+        id="error-login-contrasena"
+        class="mensaje-error"
+        aria-live="polite"
+      ></span>
+
+    </fieldset>
+
+
+    <button type="submit">
+      Iniciar sesión
+    </button>
+
+
+    <p
+      id="mensaje-login"
+      class="mensaje-estado"
+      role="status"
+      aria-live="polite"
+    ></p>
+
+
+    <p
+      id="error-login-mensaje"
+      class="mensaje-error"
+      aria-live="polite"
+    ></p>
+
+  </form>
+
+
+  <p>
+    ¿No tienes una cuenta?
+    <a href="registro.html">
+      Regístrate aquí
+    </a>
+  </p>
+
+</section>
+
+</main> <footer class="pie-sitio">
+<p>
+  <strong>Veterinaria San Marcos</strong> · Rancagua
+</p>
+
+<address>
+  Contacto:
+  <a href="contacto.html">
+    Formulario de contacto
+  </a>
+</address>
+
+<p>
+  <small>
+    Proyecto académico · Desarrollo FullStack II
+  </small>
+</p>
+
+</footer> <script src="assets/js/auth.js"></script> <script src="assets/js/menu.js"></script> </body> </html>

@@ -1,121 +1,82 @@
 <!DOCTYPE html>
 <html lang="es">
 <head>
-  <meta charset="UTF-8"><meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <meta name="description" content="Registro de usuarios en Veterinaria San Marcos.">
-  <title>Registro | Veterinaria San Marcos</title><link rel="stylesheet" href="assets/css/estilos.css"></head>
-<body class="pagina-registro">
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta name="description" content="Registro de usuarios de Veterinaria San Marcos.">
+  <title>Registro | Veterinaria San Marcos</title>
+  <link rel="stylesheet" href="assets/css/estilos.css">
+</head>
+<body>
   <a class="salto-contenido" href="#contenido-principal">Ir al contenido</a>
-  <header class="cabecera-sitio"><a class="marca" href="index.html"><img class="logo-sitio" src="assets/img/logo-veterinaria.jpg" alt=""><span>Veterinaria San Marcos</span></a><button id="boton-menu" class="boton-menu" type="button" aria-label="Abrir o cerrar menú principal" aria-controls="menu-principal" aria-expanded="false"><span aria-hidden="true">☰</span></button><nav aria-label="Navegación principal">
-    <ul id="menu-principal" class="menu">
-      <li><a href="index.html">Inicio</a></li>
-      <li><a href="catalogo.html">Catálogo</a></li>
-      <li><a href="nosotros.html">Nosotros</a></li>
-      <li><a href="noticias.html">Noticias</a></li>
-      <li><a href="contacto.html">Contacto</a></li>
-      <li><a href="login.html">Iniciar Sesión</a></li>
-    </ul></nav>
+  <header class="cabecera-sitio">
+    <a class="marca" href="index.html"><img class="logo-sitio" src="assets/img/logo-veterinaria.jpg" alt=""><span>Veterinaria San Marcos</span></a>
+    <button id="boton-menu" class="boton-menu" type="button" aria-label="Abrir o cerrar menú principal" aria-controls="menu-principal" aria-expanded="false"><span aria-hidden="true">☰</span></button>
+    <nav aria-label="Navegación principal">
+      <ul id="menu-principal" class="menu">
+        <li><a href="index.html">Inicio</a></li>
+        <li><a href="catalogo.html">Catálogo</a></li>
+        <li><a href="nosotros.html">Nosotros</a></li>
+        <li><a href="noticias.html">Noticias</a></li>
+        <li><a href="contacto.html">Contacto</a></li>
+        <li><a href="carrito.html">Carrito (<span data-contador-carrito>0</span>)</a></li>
+        <li><a href="registro.html" aria-current="page">Registro</a></li>
+      </ul>
+    </nav>
   </header>
   <main id="contenido-principal" tabindex="-1">
-    <section class="mensaje-confirmacion">
-      <h1>Registro de nuevo usuario</h1>
-      <p>Completa el formulario para crear tu cuenta en Veterinaria San Marcos.</p>
-      <p><small><strong>Nota importante:</strong> Esta es una demostración frontend. Las contraseñas se almacenan en texto plano en localStorage, lo cual NO es seguro para producción real.</small></p>
-    </section>
-    
+    <h1>Registro de usuario</h1>
+    <p>Completa tus datos para crear una cuenta de prueba. <strong>Demostración frontend:</strong> los datos se guardan solo en este navegador (localStorage). La contraseña <strong>nunca</strong> se almacena en claro; solo se guarda un hash simulado (no criptográfico).</p>
     <form id="form-registro" class="formulario" novalidate>
       <fieldset>
         <legend>Datos personales</legend>
-        
         <label for="nombre">Nombre *</label>
-        <input id="nombre" name="nombre" type="text" maxlength="50" required aria-describedby="error-nombre" placeholder="Ej: Juan">
+        <input id="nombre" name="nombre" type="text" autocomplete="given-name" maxlength="50" required aria-describedby="error-nombre" placeholder="Juan">
         <span id="error-nombre" class="mensaje-error" aria-live="polite"></span>
 
         <label for="apellido">Apellido *</label>
-        <input id="apellido" name="apellido" type="text" maxlength="50" required aria-describedby="error-apellido" placeholder="Ej: Pérez">
+        <input id="apellido" name="apellido" type="text" autocomplete="family-name" maxlength="50" required aria-describedby="error-apellido" placeholder="Pérez">
         <span id="error-apellido" class="mensaje-error" aria-live="polite"></span>
 
         <label for="correo">Correo electrónico *</label>
-        <input id="correo" name="correo" type="email" maxlength="100" required aria-describedby="error-correo" placeholder="usuario@duoc.cl o usuario@gmail.com">
+        <input id="correo" name="correo" type="email" autocomplete="email" maxlength="100" required aria-describedby="error-correo" placeholder="usuario@duoc.cl">
         <span id="error-correo" class="mensaje-error" aria-live="polite"></span>
 
+        <label for="usuario">Nombre de usuario *</label>
+        <input id="usuario" name="usuario" type="text" autocomplete="username" minlength="3" maxlength="30" required aria-describedby="error-usuario" placeholder="juanperez">
+        <span id="error-usuario" class="mensaje-error" aria-live="polite"></span>
+      </fieldset>
+
+      <fieldset>
+        <legend>Contraseña</legend>
+        <label for="contrasena">Contraseña (mínimo 6 caracteres) *</label>
+        <input id="contrasena" name="contrasena" type="password" autocomplete="new-password" minlength="6" required aria-describedby="error-contrasena">
+        <span id="error-contrasena" class="mensaje-error" aria-live="polite"></span>
+
+        <label for="confirmar">Confirmar contraseña *</label>
+        <input id="confirmar" name="confirmar" type="password" autocomplete="new-password" required aria-describedby="error-confirmar">
+        <span id="error-confirmar" class="mensaje-error" aria-live="polite"></span>
+      </fieldset>
+
+      <fieldset>
+        <legend>Ubicación</legend>
         <label for="region">Región *</label>
         <select id="region" name="region" required aria-describedby="error-region">
           <option value="">Selecciona una región</option>
-          <option value="RM">Región Metropolitana</option>
-          <option value="VAL">Valparaíso</option>
-          <option value="BIOB">Biobío</option>
-          <option value="ARA">Araucanía</option>
-          <option value="LIB">Libertador General Bernardo O'Higgins</option>
         </select>
         <span id="error-region" class="mensaje-error" aria-live="polite"></span>
 
         <label for="comuna">Comuna *</label>
-        <select id="comuna" name="comuna" required aria-describedby="error-comuna">
-          <option value="">Selecciona una comuna</option>
-          <!-- Comunas Región Metropolitana -->
-          <optgroup label="Región Metropolitana">
-            <option value="Santiago">Santiago</option>
-            <option value="Puente Alto">Puente Alto</option>
-            <option value="Maipú">Maipú</option>
-            <option value="Concón">Concón</option>
-            <option value="San Bernardo">San Bernardo</option>
-          </optgroup>
-          <!-- Comunas Valparaíso -->
-          <optgroup label="Valparaíso">
-            <option value="Valparaíso">Valparaíso</option>
-            <option value="Viña del Mar">Viña del Mar</option>
-            <option value="Concón">Concón</option>
-            <option value="Quintero">Quintero</option>
-          </optgroup>
-          <!-- Comunas Biobío -->
-          <optgroup label="Biobío">
-            <option value="Concepción">Concepción</option>
-            <option value="Talcahuano">Talcahuano</option>
-            <option value="Hualqui">Hualqui</option>
-          </optgroup>
-          <!-- Comunas Araucanía -->
-          <optgroup label="Araucanía">
-            <option value="Temuco">Temuco</option>
-            <option value="Angol">Angol</option>
-            <option value="Cautín">Cautín</option>
-          </optgroup>
-          <!-- Comunas Libertador General Bernardo O'Higgins -->
-          <optgroup label="Libertador General Bernardo O'Higgins">
-            <option value="Rancagua">Rancagua</option>
-            <option value="Chillán">Chillán</option>
-            <option value="Curicó">Curicó</option>
-          </optgroup>
+        <select id="comuna" name="comuna" required aria-describedby="error-comuna" disabled>
+          <option value="">Primero selecciona una región</option>
         </select>
         <span id="error-comuna" class="mensaje-error" aria-live="polite"></span>
-
-        <label for="usuario">Usuario *</label>
-        <input id="usuario" name="usuario" type="text" maxlength="20" required aria-describedby="error-usuario" placeholder="Ej: juanperez">
-        <span id="error-usuario" class="mensaje-error" aria-live="polite"></span>
-
-        <label for="password">Contraseña *</label>
-        <input id="password" name="password" type="password" minlength="6" required aria-describedby="error-password" placeholder="Mínimo 6 caracteres">
-        <span id="error-password" class="mensaje-error" aria-live="polite"></span>
-
-        <label for="confirmPassword">Confirmar contraseña *</label>
-        <input id="confirmPassword" name="confirmPassword" type="password" minlength="6" required aria-describedby="error-confirmPassword" placeholder="Repite la contraseña">
-        <span id="error-confirmPassword" class="mensaje-error" aria-live="polite"></span>
-
-        <label for="rol">Rol *</label>
-        <select id="rol" name="rol" required aria-describedby="error-rol">
-          <option value="usuario">Usuario normal</option>
-          <option value="admin">Administrador (solo para demostración)</option>
-        </select>
-        <span id="error-rol" class="mensaje-error" aria-live="polite"></span>
-
-        <div class="nota-demo">
-          <p><strong>Nota:</strong> El rol de administrador es solo para demostración. En un sistema real, los permisos se gestionan con backend seguro.</p>
-        </div>
       </fieldset>
-      
-      <button type="submit">Registrarse</button>
-      <a href="login.html" class="boton-secundario">¿Ya tienes cuenta? Inicia sesión</a>
+
+      <button type="submit">Crear cuenta</button>
       <p id="mensaje-registro" role="status"></p>
+      <p class="nota-seguridad">⚠️ Esta es una demostración frontend. Los usuarios se registran con rol "usuario". Solo el administrador puede crear cuentas de admin.</p>
+      <p>¿Ya tienes cuenta? <a href="login.html">Inicia sesión</a>.</p>
     </form>
   </main>
   <footer class="pie-sitio">
@@ -123,6 +84,9 @@
     <address>Contacto: <a href="contacto.html">Formulario de contacto</a></address>
     <p><small>Proyecto académico · Desarrollo FullStack II</small></p>
   </footer>
-  <script src="assets/js/datos.js"></script><script src="assets/js/registro.js"></script><script src="assets/js/menu.js"></script>
+  <script src="assets/js/regiones.js"></script>
+  <script src="assets/js/auth.js"></script>
+  <script src="assets/js/menu.js"></script>
 </body>
 </html>
+
