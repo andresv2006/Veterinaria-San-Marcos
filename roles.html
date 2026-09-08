@@ -1,0 +1,73 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta name="description" content="Administración de usuarios en Veterinaria San Marcos.">
+  <title>Usuarios | Veterinaria San Marcos</title>
+  <link rel="stylesheet" href="assets/css/estilos.css">
+</head>
+<body class="pagina-admin">
+  <a class="salto-contenido" href="#contenido-principal">Ir al contenido</a>
+  <header class="cabecera-sitio">
+    <a class="marca" href="index.html"><img class="logo-sitio" src="assets/img/logo-veterinaria.jpg" alt=""><span>Veterinaria San Marcos</span></a>
+    <button id="boton-menu" class="boton-menu" type="button" aria-label="Abrir o cerrar menú principal" aria-controls="menu-principal" aria-expanded="false"><span aria-hidden="true">☰</span></button><nav aria-label="Navegación de administración">
+      <ul id="menu-admin" class="menu">
+        <li><a href="index.html">Tienda</a></li>
+        <li><a href="admin-productos.html">Productos</a></li>
+        <li><a href="roles.html" aria-current="page">Usuarios</a></li>
+      </ul>
+    </nav>
+  </header>
+  <div class="estructura-admin">
+    <aside class="menu-admin">
+      <h2>Administración</h2>
+      <nav aria-label="Menú lateral">
+        <ul>
+          <li><a href="admin-productos.html">Lista de productos</a></li>
+          <li><a href="admin-producto-form.html">Nuevo producto</a></li>
+          <li><a href="roles.html" aria-current="page">Gestión de usuarios</a></li>
+        </ul>
+      </nav>
+      <p class="nota-demo"><strong>Nota:</strong> Solo los administradores pueden acceder a esta sección.</p>
+    </aside>
+    <main id="contenido-principal">
+      <h1>Gestión de Usuarios</h1>
+      <div class="acciones-superiores">
+        <div><label for="buscar-usuarios">Buscar por nombre, correo o usuario</label><input id="buscar-usuarios" type="search" placeholder="Ej: Juan Pérez"></div>
+        <button id="restaurar-usuarios" class="boton-secundario" type="button">Restaurar usuarios originales</button>
+      </div>
+      <p id="cantidad-usuarios"></p>
+      <p id="mensaje-usuarios" class="mensaje-estado" aria-live="polite"></p>
+      
+      <div class="tabla-responsive">
+        <table>
+          <caption>Listado de usuarios registrados</caption>
+          <thead>
+            <tr>
+              <th scope="col">Código</th>
+              <th scope="col">Nombre Completo</th>
+              <th scope="col">Correo Electrónico</th>
+              <th scope="col">Rol</th>
+              <th scope="col">Estado</th>
+              <th scope="col">Acciones</th>
+            </tr>
+          </thead>
+          <tbody id="cuerpo-usuarios"></tbody>
+        </table>
+      </div>
+      
+      <div class="acciones-tabla">
+        <button id="crear-usuario" class="boton" type="button">Crear nuevo usuario</button>
+        <a href="admin-productos.html" class="boton-secundario">Volver a productos</a>
+      </div>
+    </main>
+  </div>
+  <footer class="pie-sitio">
+    <p><strong>Veterinaria San Marcos</strong> · Rancagua</p>
+    <address>Contacto: <a href="contacto.html">Formulario de contacto</a></address>
+    <p><small>Proyecto académico · Desarrollo FullStack II</small></p>
+  </footer>
+  <script src="assets/js/datos.js"></script><script src="assets/js/roles.js"></script><script src="assets/js/menu.js"></script>
+</body>
+</html>
