@@ -1,4 +1,8 @@
 /* Veterinaria San Marcos — auth.js (Integrante 3)
+   ⚠️ DEMOSTRACIÓN FRONTEND NO SEGURA ⚠️
+   Esta autenticación es ÚNICAMENTE para demostración de evaluación.
+   NO proporciona seguridad real y no debe usarse en producción.
+   
    Simulación frontend: los usuarios se guardan en localStorage.
    CONTRASEÑAS: nunca se almacenan. Se guarda únicamente un hash simulado
    (cadena no reversible) para demostración. La autenticación real con backend
@@ -7,6 +11,7 @@
 
 const CLAVE_USUARIOS = "vsm_usuarios";
 const CLAVE_SESION = "vsm_sesion";
+const TIEMPO_EXPIRACION_SESION = 24 * 60 * 60 * 1000; // 24 horas en milisegundos
 
 function obtenerUsuarios() {
   try {
@@ -20,28 +25,59 @@ function guardarUsuarios(usuarios) {
   localStorage.setItem(CLAVE_USUARIOS, JSON.stringify(usuarios));
 }
 
+/**
+ * ⚠️ DEMOSTRACIÓN FRONTEND NO SEGURA ⚠️
+ * Esta función es solo para demostración. No usa tokens ni JWT reales.
+ */
 function obtenerSesion() {
   try {
-    return JSON.parse(localStorage.getItem(CLAVE_SESION));
+    const sesion = JSON.parse(localStorage.getItem(CLAVE_SESION));
+    // Validar que la sesión no haya expirado
+    if (sesion && sesion.inicioSesion) {
+      const ahora = Date.now();
+      if (ahora - sesion.inicioSesion < TIEMPO_EXPIRACION_SESION) {
+        return sesion;
+      }
+    }
+    // Sesión expirada o inválida
+    eliminarSesion();
+    return null;
   } catch {
     return null;
   }
 }
 
 function guardarSesion(sesion) {
+  const ahora = new Date().toISOString();
+  sesion.inicioSesion = ahora;
   localStorage.setItem(CLAVE_SESION, JSON.stringify(sesion));
 }
 
+/**
+ * ⚠️ DEMOSTRACIÓN FRONTEND NO SEGURA ⚠️
+ * Cierra sesión y redirige a login.html si existe.
+ */
 function eliminarSesion() {
   localStorage.removeItem(CLAVE_SESION);
+  
+  // Redirigir a login si estamos en una página protegida
+  const rutaActual = window.location.pathname;
+  if (rutaActual.includes('/admin') || rutaActual === '/login.html') {
+    return;
+  }
+  
+  // Redirigir solo si no estamos ya en login
+  if (!rutaActual.includes('login')) {
+    window.location.href = 'login.html';
+  }
 }
 
+/**
+ * ⚠️ DEMOSTRACIÓN FRONTEND NO SEGURA ⚠️
+ * Genera un hash simulado para demostración.
+ * NO es criptográfico y no debe usarse en producción.
+ */
 function crearHashSimulado(texto) {
-  /*
-   * DEMOSTRACIÓN FRONTEND únicamente.
-   * No es un hash criptográfico real ni seguro.
-   * En producción se usará bcrypt/argon2 en el backend.
-   */
   let hash = 0;
   for (let i = 0; i < texto.length; i++) {
     const char = texto.charCodeAt(i);
@@ -49,6 +85,120 @@ function crearHashSimulado(texto) {
     hash = hash & hash;
   }
   return "sim_hash_" + Math.abs(hash).toString(36);
+}
+
+/**
+ * ⚠️ DEMOSTRACIÓN FRONTEND NO SEGURA ⚠️
+ * Inicia sesión con usuario y contraseña.
+ * Valida contra usuarios almacenados en localStorage.
+ */
+function iniciarSesion(usuario, contrasena) {
+  const usuarios = obtenerUsuarios();
+  
+  // Buscar usuario por nombre de usuario o correo
+  const usuarioEncontrado = usuarios.find((u) => 
+    u.usuario.toLowerCase() === usuario.toLowerCase() || 
+    u.correo.toLowerCase() === usuario.toLowerCase()
+  );
+  
+  if (!usuarioEncontrado) {
+    mostrarError("error-login-usuario", "Usuario no encontrado.");
+    return false;
+  }
+  
+  // Validar contraseña (comparar hash simulado)
+  const hashCalculado = crearHashSimulado(contrasena);
+  if (usuarioEncontrado.hashContrasena !== hashCalculado) {
+    mostrarError("error-login-contrasena", "Contraseña incorrecta.");
+    return false;
+  }
+  
+  // Verificar si usuario está activo
+  if (!usuarioEncontrado.activo) {
+    mostrarError("error-login-usuario", "Cuenta desactivada.");
+    return false;
+  }
+  
+  // Crear objeto de sesión
+  const sesion = {
+    id: usuarioEncontrado.id,
+    nombre: usuarioEncontrado.nombre,
+    apellido: usuarioEncontrado.apellido,
+    usuario: usuarioEncontrado.usuario,
+    correo: usuarioEncontrado.correo,
+    rol: usuarioEncontrado.rol,
+    inicioSesion: new Date().toISOString()
+  };
+  
+  guardarSesion(sesion);
+  
+  // Limpiar campos y mostrar éxito
+  document.getElementById("form-login").reset();
+  mostrarError("error-login-usuario", "");
+  mostrarError("error-login-contrasena", "");
+  mostrarError("error-login-mensaje", "");
+  
+  const mensaje = document.getElementById("mensaje-login");
+  if (mensaje) {
+    mensaje.textContent = "¡Bienvenido/a, " + sesion.nombre + "!";
+    mensaje.style.color = "#2a7f62";
+  }
+  
+  return true;
+}
+
+/**
+ * ⚠️ DEMOSTRACIÓN FRONTEND NO SEGURA ⚠️
+ * Valida si el usuario tiene sesión activa y rol válido.
+ */
+function validarSesion() {
+  const sesion = obtenerSesion();
+  
+  if (!sesion) {
+    // No hay sesión, redirigir a login
+    window.location.href = 'login.html';
+    return false;
+  }
+  
+  return true;
+}
+
+/**
+ * ⚠️ DEMOSTRACIÓN FRONTEND NO SEGURA ⚠️
+ * Verifica si el usuario tiene permisos para acceder a una ruta.
+ */
+function verificarPermiso(rutaRequerida) {
+  const sesion = obtenerSesion();
+  
+  if (!sesion) {
+    return false;
+  }
+  
+  // Solo admin puede acceder a rutas administrativas
+  if (rutaRequerida.includes('/admin')) {
+    return sesion.rol === 'admin';
+  }
+  
+  // Acceso público para otras rutas
+  return true;
+}
+
+/**
+ * ⚠️ DEMOSTRACIÓN FRONTEND NO SEGURA ⚠️
+ * Verifica si el usuario es administrador.
+ */
+function esAdmin() {
+  const sesion = obtenerSesion();
+  return sesion && sesion.rol === 'admin';
+}
+
+/**
+ * ⚠️ DEMOSTRACIÓN FRONTEND NO SEGURA ⚠️
+ * Verifica si el usuario es usuario normal.
+ */
+function esUsuario() {
+  const sesion = obtenerSesion();
+  return sesion && sesion.rol === 'usuario';
 }
 
 function mostrarError(id, mensaje) {
@@ -223,6 +373,11 @@ window.VSM_AUTH = {
   guardarSesion,
   eliminarSesion,
   crearHashSimulado,
+  iniciarSesion,
+  validarSesion,
+  verificarPermiso,
+  esAdmin,
+  esUsuario,
   correoValido,
   rutValido
 };
