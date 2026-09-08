@@ -55,20 +55,20 @@ function guardarSesion(sesion) {
 
 /**
  * ⚠️ DEMOSTRACIÓN FRONTEND NO SEGURA ⚠️
- * Cierra sesión y redirige a login.html si existe.
+ * Cierra sesión y redirige a auth.html si existe.
  */
 function eliminarSesion() {
   localStorage.removeItem(CLAVE_SESION);
   
-  // Redirigir a login si estamos en una página protegida
+  // Redirigir a auth si estamos en una página protegida
   const rutaActual = window.location.pathname;
-  if (rutaActual.includes('/admin') || rutaActual === '/login.html') {
+  if (rutaActual.includes('/admin') || rutaActual === '/auth.html') {
     return;
   }
   
-  // Redirigir solo si no estamos ya en login
-  if (!rutaActual.includes('login')) {
-    window.location.href = 'login.html';
+  // Redirigir solo si no estamos ya en auth
+  if (!rutaActual.includes('auth')) {
+    window.location.href = 'auth.html';
   }
 }
 
@@ -155,8 +155,8 @@ function validarSesion() {
   const sesion = obtenerSesion();
   
   if (!sesion) {
-    // No hay sesión, redirigir a login
-    window.location.href = 'login.html';
+    // No hay sesión, redirigir a auth
+    window.location.href = 'auth.html';
     return false;
   }
   
@@ -302,8 +302,10 @@ function validarRegistro(d) {
 document.addEventListener("DOMContentLoaded", () => {
   const selRegion = document.getElementById("region");
   const selComuna = document.getElementById("comuna");
-  const form = document.getElementById("form-registro");
-  if (!form) return;
+  const formRegistro = document.getElementById("form-registro");
+  const formLogin = document.getElementById("form-login");
+  
+  if (!formRegistro) return;
 
   cargarRegiones(selRegion);
 
@@ -317,7 +319,8 @@ document.addEventListener("DOMContentLoaded", () => {
     mostrarError("error-comuna", "");
   });
 
-  form.addEventListener("submit", (e) => {
+  // Manejo del formulario de registro (lógica existente)
+  formRegistro.addEventListener("submit", (e) => {
     e.preventDefault();
     const datos = {
       nombre: document.getElementById("nombre").value,
@@ -360,9 +363,41 @@ document.addEventListener("DOMContentLoaded", () => {
     });
     guardarUsuarios(usuarios);
     mensaje.textContent = "Cuenta creada correctamente (demostración local).";
-    form.reset();
+    formRegistro.reset();
     cargarComunas("", selComuna);
   });
+
+  // Manejo independiente del formulario de inicio de sesión
+  if (formLogin) {
+    formLogin.addEventListener("submit", (e) => {
+      e.preventDefault();
+      
+      // Limpiar mensajes de error anteriores
+      mostrarError("error-login-usuario", "");
+      mostrarError("error-login-contrasena", "");
+      mostrarError("error-login-mensaje", "");
+      
+      // Obtener valores del formulario
+      const usuario = document.getElementById("usuario-login").value.trim();
+      const contrasena = document.getElementById("contrasena-login").value;
+      
+      // Validar que ambos campos estén completos
+      if (!usuario || !contrasena) {
+        mostrarError("error-login-usuario", "Por favor ingresa tu usuario o correo.");
+        mostrarError("error-login-contrasena", "Por favor ingresa tu contraseña.");
+        return;
+      }
+      
+      // Usar la función existente iniciarSesion()
+      const resultado = iniciarSesion(usuario, contrasena);
+      
+      // Si devuelve true, redirigir a index.html
+      if (resultado) {
+        window.location.href = 'index.html';
+      }
+      // Si devuelve false, mantener al usuario en auth.html para ver los errores
+    });
+  }
 });
 
 // API pública para reutilizar en login, admin y otros módulos.
