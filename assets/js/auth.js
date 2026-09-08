@@ -365,15 +365,11 @@ document.addEventListener("DOMContentLoaded", () => {
       mensaje.textContent = "Cuenta creada correctamente (demostración local).";
       formRegistro.reset();
       cargarComunas("", selComuna);
-    });
+    }
   }
 
-  // Manejo del formulario de inicio de sesión (siempre se configura si existe)
+  // Manejo independiente del formulario de inicio de sesión
   if (formLogin) {
-    const usuarioLogin = document.getElementById("usuario-login");
-    const contrasenaLogin = document.getElementById("contrasena-login");
-    const mensajeLogin = document.getElementById("mensaje-login");
-
     formLogin.addEventListener("submit", (e) => {
       e.preventDefault();
       
@@ -388,11 +384,18 @@ document.addEventListener("DOMContentLoaded", () => {
       
       // Validar que ambos campos estén completos
       if (!usuario) {
-        mostrarError("error-login-usuario", "El usuario o correo es obligatorio.");
+        mostrarError(
+          "error-login-usuario",
+          "El usuario o correo es obligatorio."
+        );
         return;
       }
+
       if (!contrasena) {
-        mostrarError("error-login-contrasena", "La contraseña es obligatoria.");
+        mostrarError(
+          "error-login-contrasena",
+          "La contraseña es obligatoria."
+        );
         return;
       }
       
@@ -401,7 +404,7 @@ document.addEventListener("DOMContentLoaded", () => {
       
       // Si devuelve true, redirigir a index.html
       if (resultado) {
-        window.location.href = 'index.html';
+        window.location.href = "index.html";
       }
       // Si devuelve false, permanecer en auth.html para ver el error generado por iniciarSesion()
     });
