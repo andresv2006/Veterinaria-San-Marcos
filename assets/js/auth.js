@@ -383,30 +383,20 @@ document.addEventListener("DOMContentLoaded", () => {
       const contrasena = document.getElementById("contrasena-login").value;
       
       // Validar que ambos campos estén completos
-      if (!usuario) {
-        mostrarError(
-          "error-login-usuario",
-          "El usuario o correo es obligatorio."
-        );
-        return;
-      }
-
-      if (!contrasena) {
-        mostrarError(
-          "error-login-contrasena",
-          "La contraseña es obligatoria."
-        );
+      if (!usuario || !contrasena) {
+        mostrarError("error-login-usuario", "Por favor ingresa tu usuario o correo.");
+        mostrarError("error-login-contrasena", "Por favor ingresa tu contraseña.");
         return;
       }
       
-      // Llamar a iniciarSesion()
+      // Usar la función existente iniciarSesion()
       const resultado = iniciarSesion(usuario, contrasena);
       
       // Si devuelve true, redirigir a index.html
       if (resultado) {
-        window.location.href = "index.html";
+        window.location.href = 'index.html';
       }
-      // Si devuelve false, permanecer en auth.html para ver el error generado por iniciarSesion()
+      // Si devuelve false, mantener al usuario en auth.html para ver los errores
     });
   }
 });
