@@ -1,0 +1,24 @@
+<!DOCTYPE html>
+<html lang="es">
+<head><meta charset="UTF-8"><meta name="viewport" content="width=device-width, initial-scale=1.0"><meta name="description" content="Crear o editar un producto."><title>Formulario de producto | Veterinaria San Marcos</title><link rel="stylesheet" href="assets/css/estilos.css"></head>
+<body class="pagina-admin">
+  <header class="cabecera-sitio"><a class="marca" href="index.html">Veterinaria San Marcos</a><nav aria-label="Navegación de administración"><ul class="menu"><li><a href="index.html">Tienda</a></li><li><a href="admin-productos.html">Productos</a></li></ul></nav></header>
+  <div class="estructura-admin"><aside class="menu-admin"><h2>Administración</h2><nav aria-label="Menú lateral"><ul><li><a href="admin-productos.html">Lista de productos</a></li><li><a href="admin-producto-form.html" aria-current="page">Nuevo producto</a></li></ul></nav><p class="nota-demo">Los cambios se guardan localmente para esta demostración.</p></aside>
+  <main id="contenido-principal"><h1 id="titulo-form-producto">Nuevo producto</h1><form id="form-producto" class="formulario" novalidate><fieldset><legend>Datos obligatorios</legend>
+    <label for="codigo">Código *</label><input id="codigo" name="codigo" type="text" minlength="3" required><span id="error-codigo" class="mensaje-error" aria-live="polite"></span>
+    <label for="nombre">Nombre *</label><input id="nombre" name="nombre" type="text" maxlength="100" required><span id="error-nombre" class="mensaje-error" aria-live="polite"></span>
+    <label for="categoria">Categoría *</label><select id="categoria" name="categoria" required><option value="">Selecciona</option><option>Antibióticos</option><option>Antiparasitarios</option><option>Antiinflamatorios</option><option>Dermatología</option><option>Digestivo</option><option>Cardíaco</option><option>Analgésicos</option><option>Vacunas</option><option>Suplementos</option></select><span id="error-categoria" class="mensaje-error" aria-live="polite"></span>
+    <label for="precio">Precio *</label><input id="precio" name="precio" type="number" min="0" step="0.01" required><span id="error-precio" class="mensaje-error" aria-live="polite"></span>
+    <label for="stock">Stock *</label><input id="stock" name="stock" type="number" min="0" step="1" required><span id="error-stock" class="mensaje-error" aria-live="polite"></span>
+    <label for="stockCritico">Stock crítico</label><input id="stockCritico" name="stockCritico" type="number" min="0" step="1"><span id="error-stockCritico" class="mensaje-error" aria-live="polite"></span>
+  </fieldset><fieldset><legend>Datos opcionales y del catálogo</legend>
+    <label for="descripcion">Descripción (máximo 500 caracteres)</label><textarea id="descripcion" name="descripcion" maxlength="500" rows="4"></textarea><span id="error-descripcion" class="mensaje-error" aria-live="polite"></span>
+    <label for="principioActivo">Principio activo</label><input id="principioActivo" name="principioActivo" type="text">
+    <label for="presentacion">Presentación</label><input id="presentacion" name="presentacion" type="text">
+    <label for="especie">Especie</label><input id="especie" name="especie" type="text">
+    <label for="imagen">Ruta de imagen</label><input id="imagen" name="imagen" type="text" placeholder="assets/img/mascotas.jpg">
+  </fieldset><p id="mensaje-form-producto" class="mensaje-error" aria-live="polite"></p><div><button type="submit">Guardar producto</button> <a href="admin-productos.html">Cancelar</a></div></form></main></div>
+  <script src="assets/js/datos.js"></script><script src="assets/js/admin-producto-form.js"></script>
+</body>
+</html>
+
