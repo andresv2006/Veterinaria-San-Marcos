@@ -35,7 +35,8 @@ function obtenerSesion() {
     // Validar que la sesión no haya expirado
     if (sesion && sesion.inicioSesion) {
       const ahora = Date.now();
-      if (ahora - sesion.inicioSesion < TIEMPO_EXPIRACION_SESION) {
+      const inicioSesion = new Date(sesion.inicioSesion).getTime();
+      if (ahora - inicioSesion < TIEMPO_EXPIRACION_SESION) {
         return sesion;
       }
     }
@@ -85,6 +86,35 @@ function crearHashSimulado(texto) {
     hash = hash & hash;
   }
   return "sim_hash_" + Math.abs(hash).toString(36);
+}
+
+function crearUsuariosDePrueba() {
+  if (obtenerUsuarios().length > 0) return;
+
+  guardarUsuarios([
+    {
+      id: "ADMIN001",
+      nombre: "Administrador",
+      apellido: "Sistema",
+      correo: "admin@veterinaria.cl",
+      usuario: "admin",
+      hashContrasena: crearHashSimulado("admin123"),
+      rol: "admin",
+      activo: true,
+      creadoEn: new Date().toISOString()
+    },
+    {
+      id: "USUARIO001",
+      nombre: "Usuario",
+      apellido: "Demostración",
+      correo: "usuario@duoc.cl",
+      usuario: "usuario",
+      hashContrasena: crearHashSimulado("usuario123"),
+      rol: "usuario",
+      activo: true,
+      creadoEn: new Date().toISOString()
+    }
+  ]);
 }
 
 /**
@@ -300,6 +330,7 @@ function validarRegistro(d) {
 }
 
 document.addEventListener("DOMContentLoaded", () => {
+  crearUsuariosDePrueba();
   const selRegion = document.getElementById("region");
   const selComuna = document.getElementById("comuna");
   const formRegistro = document.getElementById("form-registro");
@@ -365,7 +396,7 @@ document.addEventListener("DOMContentLoaded", () => {
       mensaje.textContent = "Cuenta creada correctamente (demostración local).";
       formRegistro.reset();
       cargarComunas("", selComuna);
-    }
+    });
   }
 
   // Manejo independiente del formulario de inicio de sesión

@@ -507,6 +507,61 @@ tfoot td {
 [aria-invalid="true"] {
   border-color: #d9534f;
 }
+
+.pagina-registro,
+.pagina-login,
+.pagina-admin {
+  background-color: var(--color-fondo);
+  min-height: 100vh;
+}
+
+.pagina-registro .mensaje-confirmacion,
+.pagina-login .mensaje-confirmacion {
+  margin-bottom: 2rem;
+}
+
+.fila-admin td {
+  background: #e8f4f8;
+}
+
+.fila-admin td:first-child {
+  font-weight: bold;
+  color: var(--color-primario);
+}
+
+#region,
+#comuna {
+  min-width: 20rem;
+}
+
+.fila-admin .etiqueta {
+  background: #e8f4f8;
+  color: var(--color-primario);
+}
+
+.fila-admin .etiqueta[aria-label="Administrador"] {
+  background: #fff3cd;
+  color: #856404;
+}
+
+.area-sesion,
+.area-autenticacion {
+  display: flex;
+  gap: 1rem;
+  align-items: center;
+}
+
+#cuerpo-usuarios td:nth-child(4) .etiqueta {
+  display: inline-block;
+  padding: 0.2rem 0.6rem;
+  border-radius: 1rem;
+  font-size: 0.8rem;
+  font-weight: bold;
+}
+
+[data-borrar] {
+  min-width: 7rem;
+}
 .mensaje-error {
   display: block;
   font-size: 0.875rem;
