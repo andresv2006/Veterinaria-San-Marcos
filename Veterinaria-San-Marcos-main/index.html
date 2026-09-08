@@ -1,0 +1,91 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta name="description" content="Conoce los servicios de Veterinaria San Marcos en Rancagua.">
+  <title>Veterinaria San Marcos | Inicio</title>
+  <link rel="stylesheet" href="assets/css/estilos.css">
+</head>
+<body>
+  <a class="salto-contenido" href="#contenido-principal">Ir al contenido</a>
+  <header class="cabecera-sitio">
+    <a class="marca" href="index.html"><img class="logo-sitio" src="assets/img/logo-veterinaria.jpg" alt=""><span>Veterinaria San Marcos</span></a>
+    <button id="boton-menu" class="boton-menu" type="button" aria-label="Abrir o cerrar menú principal" aria-controls="menu-principal" aria-expanded="false"><span aria-hidden="true">☰</span></button><nav aria-label="Navegación principal">
+      <ul id="menu-principal" class="menu">
+        <li><a href="index.html" aria-current="page">Inicio</a></li>
+        <li><a href="catalogo.html">Catálogo</a></li>
+        <li><a href="nosotros.html">Nosotros</a></li>
+        <li><a href="noticias.html">Noticias</a></li>
+        <li><a href="contacto.html">Contacto</a></li>
+        <li><a href="carrito.html">Carrito (<span data-contador-carrito>0</span>)</a></li>
+      </ul>
+    </nav>
+  </header>
+  <main id="contenido-principal" tabindex="-1">
+    <section class="presentacion-principal" aria-labelledby="titulo-principal">
+      <div>
+        <h1 id="titulo-principal">Cuidamos la salud y el bienestar de tus mascotas</h1>
+        <p class="mensaje-inicial">Acompañamos el cuidado de tu mascota en cada etapa de su vida.</p>
+        <p>Somos una veterinaria de Rancagua dedicada principalmente a la atención de perros y gatos.</p>
+        <a class="boton" href="catalogo.html">Ver productos y servicios</a>
+      </div>
+      <img src="assets/img/mascotas.jpg" alt="Un perro y un gato atendidos en Veterinaria San Marcos">
+    </section>
+    <section>
+      <h2>Atención veterinaria en Rancagua</h2>
+      <p>Atendemos principalmente perros y gatos, y también conejos y aves. Conoce algunas de nuestras categorías de servicios:</p>
+      <ul>
+        <li>Consultas</li>
+
+        <li>Vacunación</li>
+
+        <li>Desparasitación</li>
+
+      </ul>
+      <button id="boton-bienvenida" type="button">Conocer el proyecto</button>
+    </section>
+    <section aria-labelledby="titulo-servicios">
+      <h2 id="titulo-servicios">Servicios destacados</h2>
+      <p>Revisa los servicios y sus cupos disponibles.</p>
+      <p>
+        <button id="mostrar-todos-servicios" type="button">Todos</button>
+        <button id="mostrar-servicios-disponibles" type="button">Con cupos</button>
+      </p>
+      <div id="cartelera-servicios" class="grilla-tarjetas"></div>
+    </section>
+    <section aria-labelledby="titulo-productos-destacados">
+      <h2 id="titulo-productos-destacados">Productos destacados</h2>
+      <p>Estos productos forman parte del catálogo entregado para la veterinaria.</p>
+      <p id="aviso-catalogo" class="mensaje-estado" aria-live="polite"></p>
+      <div id="productos-destacados" class="grilla-tarjetas"></div>
+      <p><a href="catalogo.html">Ver todos los productos y servicios</a></p>
+    </section>
+    <section aria-labelledby="titulo-multimedia">
+      <h2 id="titulo-multimedia">Música para perros</h2>
+      <p>Te invitamos a ver un video de música para perros:</p>
+      <iframe
+        src="https://www.youtube-nocookie.com/embed/DIt8a1Sb68U"
+        title="Música para perros con ansiedad"
+        loading="lazy"
+        allow="accelerometer; autoplay; encrypted-media; picture-in-picture"
+        allowfullscreen>
+      </iframe>
+    </section>
+    <aside class="aviso" aria-labelledby="titulo-aviso">
+      <h2 id="titulo-aviso">¿Necesitas una hora para tu mascota?</h2>
+      <p>Puedes solicitar atención por teléfono o de forma presencial en recepción.</p>
+      <a href="nosotros.html#titulo-solicitud">Revisar los pasos para solicitar atención</a>
+    </aside>
+  </main>
+  <footer class="pie-sitio">
+    <p><strong>Veterinaria San Marcos</strong> · Rancagua</p>
+    <address>Contacto: <a href="contacto.html">Formulario de contacto</a></address>
+    <p><small>Proyecto académico · Desarrollo FullStack II</small></p>
+  </footer>
+  <script src="assets/js/datos.js"></script>
+  <script src="assets/js/catalogo.js"></script>
+  <script src="assets/js/app.js"></script>
+  <script src="assets/js/menu.js"></script>
+</body>
+</html>
