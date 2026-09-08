@@ -368,7 +368,7 @@ document.addEventListener("DOMContentLoaded", () => {
     });
   }
 
-  // Manejo del formulario de inicio de sesión (independiente)
+  // Manejo del formulario de inicio de sesión (siempre se configura si existe)
   if (formLogin) {
     const usuarioLogin = document.getElementById("usuario-login");
     const contrasenaLogin = document.getElementById("contrasena-login");
