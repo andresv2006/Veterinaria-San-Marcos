@@ -305,67 +305,68 @@ document.addEventListener("DOMContentLoaded", () => {
   const formRegistro = document.getElementById("form-registro");
   const formLogin = document.getElementById("form-login");
   
-  if (!formRegistro) return;
+  // Manejo del formulario de registro (solo si existe)
+  if (formRegistro) {
+    cargarRegiones(selRegion);
 
-  cargarRegiones(selRegion);
-
-  selRegion.addEventListener("change", () => {
-    cargarComunas(selRegion.value, selComuna);
-    mostrarError("error-region", "");
-    mostrarError("error-comuna", "");
-  });
-
-  selComuna.addEventListener("change", () => {
-    mostrarError("error-comuna", "");
-  });
-
-  // Manejo del formulario de registro (lógica existente)
-  formRegistro.addEventListener("submit", (e) => {
-    e.preventDefault();
-    const datos = {
-      nombre: document.getElementById("nombre").value,
-      apellido: document.getElementById("apellido").value,
-      correo: document.getElementById("correo").value,
-      usuario: document.getElementById("usuario").value,
-      contrasena: document.getElementById("contrasena").value,
-      confirmar: document.getElementById("confirmar").value,
-      region: document.getElementById("region").value,
-      comuna: document.getElementById("comuna").value
-    };
-    const errores = validarRegistro(datos);
-    mostrarError("error-nombre", errores.nombre);
-    mostrarError("error-apellido", errores.apellido);
-    mostrarError("error-correo", errores.correo);
-    mostrarError("error-usuario", errores.usuario);
-    mostrarError("error-contrasena", errores.contrasena);
-    mostrarError("error-confirmar", errores.confirmar);
-    mostrarError("error-region", errores.region);
-    mostrarError("error-comuna", errores.comuna);
-
-    const mensaje = document.getElementById("mensaje-registro");
-    if (Object.keys(errores).length > 0) {
-      mensaje.textContent = "Revisa los errores del formulario.";
-      return;
-    }
-    const usuarios = obtenerUsuarios();
-    usuarios.push({
-      id: "usr_" + Date.now(),
-      nombre: datos.nombre.trim(),
-      apellido: datos.apellido.trim(),
-      correo: datos.correo.trim(),
-      usuario: datos.usuario.trim(),
-      region: datos.region,
-      comuna: datos.comuna,
-      hashContrasena: crearHashSimulado(datos.contrasena),
-      rol: "usuario",
-      activo: true,
-      creadoEn: new Date().toISOString()
+    selRegion.addEventListener("change", () => {
+      cargarComunas(selRegion.value, selComuna);
+      mostrarError("error-region", "");
+      mostrarError("error-comuna", "");
     });
-    guardarUsuarios(usuarios);
-    mensaje.textContent = "Cuenta creada correctamente (demostración local).";
-    formRegistro.reset();
-    cargarComunas("", selComuna);
-  });
+
+    selComuna.addEventListener("change", () => {
+      mostrarError("error-comuna", "");
+    });
+
+    // Manejo del formulario de registro
+    formRegistro.addEventListener("submit", (e) => {
+      e.preventDefault();
+      const datos = {
+        nombre: document.getElementById("nombre").value,
+        apellido: document.getElementById("apellido").value,
+        correo: document.getElementById("correo").value,
+        usuario: document.getElementById("usuario").value,
+        contrasena: document.getElementById("contrasena").value,
+        confirmar: document.getElementById("confirmar").value,
+        region: document.getElementById("region").value,
+        comuna: document.getElementById("comuna").value
+      };
+      const errores = validarRegistro(datos);
+      mostrarError("error-nombre", errores.nombre);
+      mostrarError("error-apellido", errores.apellido);
+      mostrarError("error-correo", errores.correo);
+      mostrarError("error-usuario", errores.usuario);
+      mostrarError("error-contrasena", errores.contrasena);
+      mostrarError("error-confirmar", errores.confirmar);
+      mostrarError("error-region", errores.region);
+      mostrarError("error-comuna", errores.comuna);
+
+      const mensaje = document.getElementById("mensaje-registro");
+      if (Object.keys(errores).length > 0) {
+        mensaje.textContent = "Revisa los errores del formulario.";
+        return;
+      }
+      const usuarios = obtenerUsuarios();
+      usuarios.push({
+        id: "usr_" + Date.now(),
+        nombre: datos.nombre.trim(),
+        apellido: datos.apellido.trim(),
+        correo: datos.correo.trim(),
+        usuario: datos.usuario.trim(),
+        region: datos.region,
+        comuna: datos.comuna,
+        hashContrasena: crearHashSimulado(datos.contrasena),
+        rol: "usuario",
+        activo: true,
+        creadoEn: new Date().toISOString()
+      });
+      guardarUsuarios(usuarios);
+      mensaje.textContent = "Cuenta creada correctamente (demostración local).";
+      formRegistro.reset();
+      cargarComunas("", selComuna);
+    }
+  }
 
   // Manejo independiente del formulario de inicio de sesión
   if (formLogin) {
